@@ -1,0 +1,9 @@
+ - Split things into logical modules
+ - Redux
+ - Tests
+ - React navigation from scratch (multiple lists?)
+    - Drawer for lists
+    - Tabs for filters
+  - Notifications of reminders
+  - Analytics?
+  - Priority?
