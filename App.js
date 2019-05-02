@@ -1,11 +1,14 @@
 import React from 'react';
 import {
+  Button,
   StyleSheet,
   Text,
   TextInput,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  FlatList
 } from 'react-native';
+import Task from './components/Task';
 
 const tasks = [
   {
@@ -28,49 +31,67 @@ export default class App extends React.Component {
   state = {
     tasks: [],
     taskName: '',
+    showCompleted: true,
   }
 
   addTask = () => {
+    const { taskName, tasks } = this.state;
+
+    if (!taskName.trim()) return;
+
     const newTask = {
       id: Math.random().toString(32),
-      name: this.state.taskName,
+      name: taskName,
     }
 
     this.setState({
-      tasks: this.state.tasks.concat(createTask(newTask)),
+      tasks: tasks.concat(createTask(newTask)),
       taskName: ''
     })
-
-
   }
 
   handleInput = (value) => {
     this.setState({ taskName: value });
   }
 
-  completedTask = (task) =>  {
+  toggleCompleted = (task) =>  {
     this.setState({
       tasks: this.state.tasks.map(t => ({
         ...t,
-        completed: t.id === task.id ? true : t.completed,
+        completed: t.id === task.id ? !t.completed : t.completed,
       })),
     })
   }
 
+  toggleShowCompleted = () => {
+    this.setState({
+      showCompleted: !this.state.showCompleted
+    })
+  }
+
+  renderTask = ({item}) => (
+    <Task task={item} toggleCompleted={this.toggleCompleted} key={item.id}></Task>
+  )
   render() {
+    const tasks = this.state.showCompleted
+      ? this.state.tasks
+      : this.state.tasks.filter(task => !task.completed)
+
     return (
       <View style={styles.container}>
-        <TextInput style={styles.input} value={this.state.taskName} onChangeText={this.handleInput}/>
+        <TextInput
+          style={styles.input}
+          value={this.state.taskName}
+          onChangeText={this.handleInput}
+          onSubmitEditing={this.addTask}
+          blurOnSubmit={false}
+          autoFocus={true}
+        />
         <TouchableHighlight onPress={this.addTask}>
           <Text>Add task</Text>
         </TouchableHighlight>
-        {this.state.tasks.map((task) => {
-          return (
-            <TouchableHighlight onPress={() => this.completedTask(task)} key={task.id}>
-              <Text textDecorationLine={task.completed ? 'line-through' : 'none'}>{task.name}</Text>
-            </TouchableHighlight>
-          )
-        })}
+        <FlatList data={tasks} renderItem={this.renderTask}/>
+        <Button title={`${this.state.showCompleted ? 'Hide': 'Show'} Completed`} onPress={this.toggleShowCompleted}/>
       </View>
     );
   }
@@ -82,6 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 100,
   },
 
   input: {
