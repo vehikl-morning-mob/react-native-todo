@@ -1,6 +1,7 @@
  - Split things into logical modules
  - Redux
  - Tests
+  - Make it deployable / have a pipeline
  - React navigation from scratch (multiple lists?)
     - Drawer for lists
     - Tabs for filters
