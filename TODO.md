@@ -8,3 +8,4 @@
   - Notifications of reminders
   - Analytics?
   - Priority?
+ - Add autofocus to input

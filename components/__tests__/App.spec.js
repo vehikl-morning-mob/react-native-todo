@@ -1,11 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Task from '../Task';
-import { TouchableHighlight } from 'react-native';
-import { isTemplateElement } from '@babel/types';
+import App from '../../App'
 
 describe('App', () => {
-  it('does something', () => {
-    expect(true).toBe(true);
+  it('Renders an empty list', () => {
+    const component = renderer.create(<App />).toJSON();
+    expect(component).toMatchSnapshot();
+  })
+
+  it('Adds task to list', () => {
+    expect(true).toBe(true)
   })
 })

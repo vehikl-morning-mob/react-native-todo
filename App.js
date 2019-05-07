@@ -85,7 +85,6 @@ export default class App extends React.Component {
           onChangeText={this.handleInput}
           onSubmitEditing={this.addTask}
           blurOnSubmit={false}
-          autoFocus={true}
         />
         <TouchableHighlight onPress={this.addTask}>
           <Text>Add task</Text>
