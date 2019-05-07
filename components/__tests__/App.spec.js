@@ -17,4 +17,13 @@ describe('App', () => {
     instance.findByType(TouchableHighlight).props.onPress();
     expect(component.toJSON()).toMatchSnapshot();
   })
+
+  it('Adds a task when enter/return is pressed', () => {
+    const component = renderer.create(<App />);
+    const instance = component.root;
+
+    instance.findByType(TextInput).props.onChangeText('task1');
+    instance.findByType(TextInput).props.onSubmitEditing();
+    expect(component.toJSON()).toMatchSnapshot();
+  })
 })
