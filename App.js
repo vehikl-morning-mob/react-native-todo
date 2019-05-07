@@ -89,7 +89,7 @@ export default class App extends React.Component {
         <TouchableHighlight onPress={this.addTask}>
           <Text>Add task</Text>
         </TouchableHighlight>
-        <FlatList data={tasks} renderItem={this.renderTask}/>
+        <FlatList data={tasks} renderItem={this.renderTask} keyExtractor={(item, index) => item.id } />
         <Button title={`${this.state.showCompleted ? 'Hide': 'Show'} Completed`} onPress={this.toggleShowCompleted}/>
       </View>
     );

@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import App from '../../App'
+import { TextInput, TouchableHighlight } from 'react-native';
+
 
 describe('App', () => {
   it('Renders an empty list', () => {
@@ -8,7 +10,11 @@ describe('App', () => {
     expect(component).toMatchSnapshot();
   })
 
-  it('Adds task to list', () => {
-    expect(true).toBe(true)
+  it('Adds task using add task touchableHighlight', () => {
+    const component = renderer.create(<App />);
+    const instance = component.root;
+    instance.findByType(TextInput).props.onChangeText('task1');
+    instance.findByType(TouchableHighlight).props.onPress();
+    expect(component.toJSON()).toMatchSnapshot();
   })
 })
