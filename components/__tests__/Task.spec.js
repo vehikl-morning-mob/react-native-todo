@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Task from '../Task';
+import { TouchableHighlight } from 'react-native';
+import { isTemplateElement } from '@babel/types';
 
 describe('Task', () => {
   it('displays the task', () => {
@@ -12,7 +14,6 @@ describe('Task', () => {
     const component = renderer.create(<Task task={ task } />).toJSON();
     expect(component).toMatchSnapshot();
   })
-
 
   it('displays completed task', () => {
     const task = {
@@ -30,10 +31,14 @@ describe('Task', () => {
       name: 'Foo',
       completed: false,
     }
-    const toggleCompleted = jest.fn();
+    const toggleCompleted = jest.fn(() => {
+      task.completed = true;
+    });
     const component = renderer.create(<Task task={task} toggleCompleted={toggleCompleted} />).root;
-    component.findByProps({ testID: 'task' }).simulate('press');
 
-    expect(toggleCompleted).toHaveBeenCalled();
+    component.findByType(TouchableHighlight).props.onPress();
+
+    expect(toggleCompleted).toHaveBeenCalledWith(task);
+    expect(task.completed).toBe(true);
   })
 })

@@ -8,7 +8,7 @@ import {
 
 const Task = ({ task, toggleCompleted}) => {
     return (
-      <TouchableHighlight testID="task" onPress={() => toggleCompleted(task)}>
+      <TouchableHighlight onPress={() => toggleCompleted(task)}>
         <Text style={task.completed && styles.textStrikeThrough}>{task.name}</Text>
       </TouchableHighlight>
     )

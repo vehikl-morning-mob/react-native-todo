@@ -17,8 +17,7 @@ exports[`Task displays completed task 1`] = `
       Object {
         "textDecorationLine": "line-through",
       }
-  }
-    testID="task"
+    }
   >
     Foo
   </Text>
@@ -39,7 +38,6 @@ exports[`Task displays the task 1`] = `
 >
   <Text
     style={false}
-    testID="task"
   >
     Foo
   </Text>
