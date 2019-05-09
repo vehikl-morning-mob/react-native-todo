@@ -7,11 +7,8 @@ import TaskEntity from '../../entities/task';
 
 describe('Incoming Queries to a Task', () => {
   it('displays the task', () => {
-    const task = {
-      id: 1,
-      name: 'Foo',
-      completed: false,
-    }
+    const task = new TaskEntity('Foo')
+
     const component = renderer.create(<Task task={task} />).toJSON();
     expect(component).toMatchSnapshot();
   })
@@ -49,9 +46,9 @@ describe('Outgoing Commands from Task Component', () => {
 describe('Incoming Commands on Task', () => {
   it('can be marked as complete', () => {
     const task = new TaskEntity();
-    expect(task.isComplete).toBe(false);
+    expect(task.completed).toBe(false);
     task.markComplete();
-    expect(task.isComplete).toBe(true);
+    expect(task.completed).toBe(true);
   })
 
   it('accepts name of task', () => {

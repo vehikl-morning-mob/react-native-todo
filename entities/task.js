@@ -1,10 +1,10 @@
 export default class {
   constructor(name) {
-    this.isComplete = false;
+    this.completed = false;
     this.name = name;
   }
 
   markComplete() {
-    this.isComplete = true;
+    this.completed = true;
   }
 }
