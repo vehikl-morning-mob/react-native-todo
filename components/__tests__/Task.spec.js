@@ -4,14 +4,14 @@ import Task from '../Task';
 import { TouchableHighlight } from 'react-native';
 import { isTemplateElement } from '@babel/types';
 
-describe('Task', () => {
+describe('Incoming Queries to a Task', () => {
   it('displays the task', () => {
     const task = {
       id: 1,
       name: 'Foo',
       completed: false,
     }
-    const component = renderer.create(<Task task={ task } />).toJSON();
+    const component = renderer.create(<Task task={task} />).toJSON();
     expect(component).toMatchSnapshot();
   })
 
@@ -24,7 +24,9 @@ describe('Task', () => {
     const component = renderer.create(<Task task={task} />).toJSON();
     expect(component).toMatchSnapshot();
   })
+})
 
+describe('Outgoing Commands from Task Component', () => {
   it('toggles completed task on click', () => {
     const task = {
       id: 1,

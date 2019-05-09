@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Task displays completed task 1`] = `
+exports[`Incoming Queries to a Task displays completed task 1`] = `
 <View
   accessible={true}
   isTVSelectable={true}
@@ -24,7 +24,7 @@ exports[`Task displays completed task 1`] = `
 </View>
 `;
 
-exports[`Task displays the task 1`] = `
+exports[`Incoming Queries to a Task displays the task 1`] = `
 <View
   accessible={true}
   isTVSelectable={true}
