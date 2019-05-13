@@ -9,6 +9,7 @@ import {
   FlatList
 } from 'react-native';
 import Task from './components/Task';
+import TaskEntity from './entities/task';
 
 const tasks = [
   {
@@ -20,11 +21,7 @@ const tasks = [
 ];
 
 const createTask = ({ id, name }) => {
-  return {
-    id,
-    name,
-    completed: false,
-  }
+  return new TaskEntity(name, id);
 }
 
 export default class App extends React.Component {
