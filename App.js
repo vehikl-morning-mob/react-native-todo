@@ -51,12 +51,15 @@ export default class App extends React.Component {
     this.setState({ taskName: value });
   }
 
-  toggleCompleted = (task) =>  {
+  toggleCompleted = (task) => {
+    task.markComplete();
+    const newTasks = [...this.state.tasks];
+
+    let index = newTasks.findIndex(candidate => candidate.id === task.id);
+    newTasks[index] = task;
+
     this.setState({
-      tasks: this.state.tasks.map(t => ({
-        ...t,
-        completed: t.id === task.id ? !t.completed : t.completed,
-      })),
+      tasks: newTasks
     })
   }
 
