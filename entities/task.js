@@ -1,8 +1,8 @@
 export default class {
-  constructor(name, id) {
-    this.completed = false;
-    this.name = name;
+  constructor(id, name) {
     this.id = id;
+    this.name = name;
+    this.completed = false;
   }
 
   markComplete() {

@@ -7,7 +7,7 @@ import TaskEntity from '../../entities/task';
 
 describe('Incoming Queries to a Task', () => {
   it('displays the task', () => {
-    const task = new TaskEntity('Foo')
+    const task = new TaskEntity(1, 'Foo')
 
     const component = renderer.create(<Task task={task} />).toJSON();
     expect(component).toMatchSnapshot();
@@ -52,7 +52,7 @@ describe('Incoming Commands on Task', () => {
   })
 
   it('accepts name of task', () => {
-    const task = new TaskEntity("foo");
+    const task = new TaskEntity(1, "foo");
     expect(task.name).toBe("foo");
   })
 })

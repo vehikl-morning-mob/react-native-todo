@@ -21,7 +21,7 @@ const tasks = [
 ];
 
 const createTask = ({ id, name }) => {
-  return new TaskEntity(name, id);
+  return new TaskEntity(id, name);
 }
 
 export default class App extends React.Component {
