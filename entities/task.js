@@ -5,10 +5,6 @@ export default class {
     this.completed = completed;
   }
 
-  markComplete() {
-    this.completed = true;
-  }
-
   toggleComplete() {
     this.completed = !this.completed;
   }

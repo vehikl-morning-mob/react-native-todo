@@ -10,8 +10,7 @@ describe('App', () => {
     it('can hide completed tasks', () => {
       const testInstance = renderer.create(<App />);
       const component = testInstance.root.instance;
-      const task = new TaskEntity(1, 'whatever man')
-      task.markComplete()
+      const task = new TaskEntity(1, 'whatever man', true)
 
       component.setState({
         tasks: [
