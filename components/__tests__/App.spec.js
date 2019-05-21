@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import App from '../../App'
 import { TextInput, TouchableHighlight } from 'react-native';
 import TaskEntity from '../../entities/task';
+import Task from '../../components/Task'
 
 
 describe('App', () => {
@@ -21,7 +22,18 @@ describe('App', () => {
       expect(testInstance.toJSON()).toMatchSnapshot();
     })
 
+    it.skip('can mark task as complete', () => {
+      const task = new TaskEntity(1, 'whatever man', false)
+      const component = renderer.create(<App initialTasks={[task]} />);
+      const { instance } = component.root;
 
+      const spy = jest.spyOn(instance, 'toggleComplete');
+      /*
+        Tasks aren't being rendered OR not being found
+      */
+      component.root.findByType(Task).props.onPress();
+      expect(spy).toBeCalled();
+    })
 
     it('Adds task using add task touchableHighlight', () => {
       const component = renderer.create(<App />);

@@ -25,8 +25,12 @@ const createTask = ({ id, name }) => {
 }
 
 export default class App extends React.Component {
+  static defaultProps = {
+    initialTasks: [],
+  }
+
   state = {
-    tasks: [],
+    tasks: this.props.initialTasks,
     taskName: '',
     showCompleted: true,
   }
@@ -51,7 +55,7 @@ export default class App extends React.Component {
     this.setState({ taskName: value });
   }
 
-  toggleCompleted = (task) => {
+  toggleComplete = (task) => {
     task.toggleComplete();
     const newTasks = [...this.state.tasks];
 
@@ -70,7 +74,7 @@ export default class App extends React.Component {
   }
 
   renderTask = ({item}) => (
-    <Task task={item} toggleCompleted={this.toggleCompleted} key={item.id}></Task>
+    <Task task={item} toggleComplete={this.toggleComplete} key={item.id}></Task>
   )
   render() {
     const tasks = this.state.showCompleted
