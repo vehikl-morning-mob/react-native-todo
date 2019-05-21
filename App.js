@@ -52,7 +52,7 @@ export default class App extends React.Component {
   }
 
   toggleCompleted = (task) => {
-    task.markComplete();
+    task.toggleComplete();
     const newTasks = [...this.state.tasks];
 
     let index = newTasks.findIndex(candidate => candidate.id === task.id);
