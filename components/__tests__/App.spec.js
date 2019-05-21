@@ -22,6 +22,8 @@ describe('App', () => {
       expect(testInstance.toJSON()).toMatchSnapshot();
     })
 
+
+
     it('Adds task using add task touchableHighlight', () => {
       const component = renderer.create(<App />);
       const instance = component.root;
@@ -38,6 +40,8 @@ describe('App', () => {
       instance.findByType(TextInput).props.onSubmitEditing();
       expect(component.toJSON()).toMatchSnapshot();
     })
+
+
   })
 
   describe('Incoming Queries', () => {
