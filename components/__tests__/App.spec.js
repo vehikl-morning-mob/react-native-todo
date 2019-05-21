@@ -21,6 +21,14 @@ describe('App', () => {
       })
       expect(testInstance.toJSON()).toMatchSnapshot();
     })
+
+    it('Adds task using add task touchableHighlight', () => {
+      const component = renderer.create(<App />);
+      const instance = component.root;
+      instance.findByType(TextInput).props.onChangeText('task1');
+      instance.findByType(TouchableHighlight).props.onPress();
+      expect(component.toJSON()).toMatchSnapshot();
+    })
   })
 
   describe('Incoming Queries', () => {
@@ -28,15 +36,6 @@ describe('App', () => {
       const component = renderer.create(<App />).toJSON();
       expect(component).toMatchSnapshot();
     })
-  })
-
-
-  it('Adds task using add task touchableHighlight', () => {
-    const component = renderer.create(<App />);
-    const instance = component.root;
-    instance.findByType(TextInput).props.onChangeText('task1');
-    instance.findByType(TouchableHighlight).props.onPress();
-    expect(component.toJSON()).toMatchSnapshot();
   })
 
   it('Adds a task when enter/return is pressed', () => {
