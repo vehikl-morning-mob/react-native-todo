@@ -22,10 +22,14 @@ describe('App', () => {
       expect(testInstance.toJSON()).toMatchSnapshot();
     })
   })
-  it('Renders an empty list', () => {
-    const component = renderer.create(<App />).toJSON();
-    expect(component).toMatchSnapshot();
+
+  describe('Incoming Queries', () => {
+    it('Renders an empty list', () => {
+      const component = renderer.create(<App />).toJSON();
+      expect(component).toMatchSnapshot();
+    })
   })
+
 
   it('Adds task using add task touchableHighlight', () => {
     const component = renderer.create(<App />);
