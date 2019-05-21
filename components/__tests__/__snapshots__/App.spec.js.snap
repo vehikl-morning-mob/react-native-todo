@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Adds a task when enter/return is pressed 1`] = `
+exports[`App Incoming Commands Adds a task when enter/return is pressed 1`] = `
 <View
   style={
     Object {
