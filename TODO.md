@@ -1,11 +1,16 @@
- - Split things into logical modules
- - Redux
- - Tests
-  - Make it deployable / have a pipeline
- - React navigation from scratch (multiple lists?)
-    - Drawer for lists
-    - Tabs for filters
-  - Notifications of reminders
-  - Analytics?
-  - Priority?
- - Add autofocus to input
+Features
+ - Autofocus to input 
+ - Add task details
+ - React Navigation
+   - Drawer for lists
+   - Tabs for filters
+ - Notifications of reminders
+ - Priority setting for task
+ - Analytics
+  
+Fixes
+ - Tweak Ui
+  
+Tools
+ - Redux 
+ - Typescript 
